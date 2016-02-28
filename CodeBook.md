@@ -9,15 +9,19 @@ library(stringr)
 
 
 First, I read in the Training set and the Test set using read.table()  These two files contain data from the training set group and the test group.  
+
 x_train <- read.table("X_train.txt")
 x_test <- read.table("X_test.txt")
 
 I Read the Features file into R next
+
 features <- read.table("features.txt")
 
 The features_info.txt file indicates the following values to to represent mean and standard deviation:
+
 #         mean(): Mean value
 #         std(): Standard deviation
+
 Since these values don't appear past row 554 of the features.txt file, I selected the first 554 rows of the features set to be used as column names of the merged dataset.  
 
 features <- features[1:554, ]
@@ -33,6 +37,7 @@ features$V2 <- as.character(features$V2)
 variableNames <- features$V2
 
 I appropriately labeled the training set and test set with the descriptive variable names from the features file:
+
 colnames(x_train) <- variableNames
 colnames(x_test) <- variableNames
 
@@ -121,10 +126,9 @@ Finally, I merged the training and the test sets to create one data set.
 
 merged_data <- rbind(x_test, x_train)
 
-To finish, I creates a second, independent tidy data set, TidyData, with the average of each variable for each activity and each subject.
+To finish, I created the required second, independent tidy data set, TidyData, with the average of each variable for each activity and each subject.
 
 tidyData <- ddply(merged_data, .(Subject, Activity), function(x) colMeans(x[, 3:81]))
-
 
 To conclude, I used write.table() to make the tidy dataset a text file.
 write.table(tidyData, file = "TidyDataset.txt", row.names = FALSE)
