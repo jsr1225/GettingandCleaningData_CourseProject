@@ -126,6 +126,13 @@ merged_data <- rbind(x_test, x_train)
 tidyData <- ddply(merged_data, .(Subject, Activity), function(x) colMeans(x[, 3:81]))
 
 
+#Write table
+write.table(tidyData, file = "TidyDataset.txt", row.names = FALSE)
+
+
+
+
+
 
 
 
