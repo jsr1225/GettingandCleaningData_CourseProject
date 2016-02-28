@@ -1,13 +1,12 @@
--Describe the variables, the data, and any transformations or work that you performed to clean up the data 
+Below, I describe the variables, the data, transformations & work done to complete the final assignment.
 
--I used the help of the following packages to complete this assignment:
+I used the help of the following packages to complete this assignment:
 
 library(plyr)
 library(tidyr)
 library(dplyr)
 library(stringr)
 
-- 
 
 First, I read in the Training set and the Test set using read.table()  These two files contain data from the training set group and the test group.  
 x_train <- read.table("X_train.txt")
